@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta http-equiv= "content-type" content= "text/html; charset=UTF-8" >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Index</title>
+
+    </head>
+
+    <body>
+
+        <table class="table table-striped">
+
+            <thead>
+
+                <tr>
+
+                    <th scope="col" colspan="4" style="text-align: center;">
+
+                        <div class="badge badge-primary text-wrap" style="font-size:20px">
+
+                            Réponse : <p name="reponse"></p>
+
+                        </div>
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td style="text-align: center;">
+
+                        <form action="reponse" method="post">
+
+                            <input type="text" style="display:none" name="cible" value="/index.html"/>
+                            <input type="text" style="display:none" name="reponse" value="1"/>
+                            <button type="submit" class="btn btn-primary" name="Demarrer">Demarrer</button>
+
+                        </form>
+
+                    </td>
+                    <td style="text-align: center;">
+
+                        <form action="reponse" method="post">
+
+                            <input type="text" style="display:none" name="cible" value="/index.html"/>
+                            <input type="text" style="display:none" name="reponse" value="2"/>
+                            <button type="submit" class="btn btn-primary" name="Accelerer">Accelerer</button>
+
+                        </form>
+
+                    </td>
+                    <td style="text-align: center;">
+
+                        <form action="reponse" method="post">
+
+                            <input type="text" style="display:none" name="cible" value="/index.html"/>
+                            <input type="text" style="display:none" name="reponse" value="3"/>
+                            <button type="submit" class="btn btn-primary" name="Decelerrer">Decelerer</button>
+
+                        </form>
+
+                    </td>
+                    <td style="text-align: center;">
+
+                        <form action="reponse" method="post">
+
+                            <input type="text" style="display:none" name="cible" value="/index.html"/>
+                            <input type="text" style="display:none" name="reponse" value="4"/>
+                            <button type="submit" class="btn btn-primary" name="Arreter">Arreter</button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td>
+
+                        <canvas id="lampe1" width="150" height="150"></canvas>
+
+                    </td>
+                    <td>
+
+                        <canvas id="lampe2" width="150" height="150"></canvas>
+
+                    </td>
+                    <td>
+
+                        <canvas id="lampte3" width="150" height="150"></canvas>
+
+                    </td>
+                    <td>
+
+                        <canvas id="lampe4" width="150" height="150"></canvas>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <script>
+
+            // variable servant a dessiner les cercles
+            let canvas;
+
+            // variable servant à définir le contexte des cercles
+            let contexte;
+
+            // variable servant à définir la position x et y du cercle
+            let x,y;
+
+            // variable servant à définir le rayon du cercle
+            let rayon;
+
+            // on parcours les 4 lampes
+            for(let i = 1; i < 5; i++) {
+
+                // on récupére le canva de la lampe
+                canvas = document.getElementById('lampe'+i);
+
+                // si il y a un contexte
+                if (canvas.getContext) {
+
+                    // alors on change la position x et y de départ et son rayon
+                    contexte = canvas.getContext('2d');
+                    x = canvas.width / 2;
+                    y = canvas.height / 2;
+                    rayon = 45;
+
+                    // on dessine le cercle
+                    contexte.beginPath();
+                    contexte.arc(x, y, rayon, 0, 2 * Math.PI, false);
+
+                    // on définit la largeur des lignes ainsi que leur couleur
+                    contexte.lineWidth = 3;
+                    contexte.strokeStyle = '#FF0000';
+
+                    // on affiche le dessin
+                    contexte.stroke();
+
+                }
+
+            }
+
+        </script>
+
+    </body>
+
+</html>
